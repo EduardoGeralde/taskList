@@ -2,11 +2,11 @@ package com.eduardoportfolio.taskList.model;
 
 import java.util.Calendar;
 
-public class TaskList {
+public class Task {
 	private Long id;
 	private String description;
 	private boolean complete;
-	private Calendar deadLine;
+	private Calendar finalizedDay;
 
 	public Long getId() {
 		return id;
@@ -32,12 +32,12 @@ public class TaskList {
 		this.complete = complete;
 	}
 
-	public Calendar getDeadLine() {
-		return deadLine;
+	public Calendar getFinalizedDay() {
+		return finalizedDay;
 	}
 
-	public void setDeadLine(Calendar deadLine) {
-		this.deadLine = deadLine;
+	public void setFinalizedDay(Calendar finalizedDay) {
+		this.finalizedDay = finalizedDay;
 	}
 
 }

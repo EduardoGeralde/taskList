@@ -10,12 +10,12 @@ import java.util.Calendar;
 import java.util.List;
 
 import com.eduardoportfolio.taskList.ConnectionFactory;
-import com.eduardoportfolio.taskList.model.TaskList;
+import com.eduardoportfolio.taskList.model.Task;
 
-public class JdbcTaskListDao {
+public class JdbcTaskDao {
 	private final Connection connection;
 
-	public JdbcTaskListDao() {
+	public JdbcTaskDao() {
 		try {
 			this.connection = new ConnectionFactory().getConnection();
 		} catch (SQLException e) {
@@ -23,8 +23,8 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	public void create(TaskList task) {
-		String sql = "insert into taskList (description, complete) values (?,?)";
+	public void create(Task task) {
+		String sql = "insert into tasks (description, complete) values (?,?)";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
@@ -36,13 +36,13 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	public void remove(TaskList task) {
+	public void remove(Task task) {
 
 		if (task.getId() == null) {
 			throw new IllegalStateException("Task ID can not be null");
 		}
 
-		String sql = "delete from taskList where id = ?";
+		String sql = "delete from tasks where id = ?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
@@ -53,15 +53,15 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	public void upDate(TaskList task) {
-		String sql = "update taskList set description = ?, complete = ?, deadLine = ? where id = ?";
+	public void upDate(Task task) {
+		String sql = "update tasks set description = ?, complete = ?, finalizedDay = ? where id = ?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, task.getDescription());
 			stmt.setBoolean(2, task.isComplete());
-			stmt.setDate(3, task.getDeadLine() != null ? new Date(
-					task.getDeadLine().getTimeInMillis()) : null);
+			stmt.setDate(3, task.getFinalizedDay() != null ? new Date(
+					task.getFinalizedDay().getTimeInMillis()) : null);
 			stmt.setLong(4, task.getId());
 			stmt.execute();
 		} catch (SQLException e) {
@@ -69,12 +69,12 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	public List<TaskList> getList() {
+	public List<Task> getList() {
 		
 		try {
-			List<TaskList> tasks = new ArrayList<TaskList>();
+			List<Task> tasks = new ArrayList<Task>();
 			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from taskList");
+					.prepareStatement("select * from tasks");
 
 			ResultSet rs = stmt.executeQuery();
 
@@ -93,7 +93,7 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	public TaskList selectById(Long id) {
+	public Task selectById(Long id) {
 
 		if (id == null) {
 			throw new IllegalStateException("Task ID can not be null");
@@ -101,7 +101,7 @@ public class JdbcTaskListDao {
 
 		try {
 			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from taskList where id = ?");
+					.prepareStatement("select * from tasks where id = ?");
 			stmt.setLong(1, id);
 
 			ResultSet rs = stmt.executeQuery();
@@ -125,7 +125,7 @@ public class JdbcTaskListDao {
 			throw new IllegalStateException("Task ID can not be null");
 		}
 
-		String sql = "update taskList set complete = ?, deadLine = ? where id = ?";
+		String sql = "update tasks set complete = ?, finalizedDay = ? where id = ?";
 		
 		PreparedStatement stmt;
 		try {
@@ -140,9 +140,9 @@ public class JdbcTaskListDao {
 		}
 	}
 
-	private TaskList fillTask(ResultSet rs) throws SQLException {
+	private Task fillTask(ResultSet rs) throws SQLException {
 		
-		TaskList task = new TaskList();
+		Task task = new Task();
 
 		//Fill object task
 		task.setId(rs.getLong("id"));
@@ -150,11 +150,11 @@ public class JdbcTaskListDao {
 		task.setComplete(rs.getBoolean("complete"));
 
 		//Fill the deadLine date  of the task, making the conversion
-		Date date = rs.getDate("deadLine");
+		Date date = rs.getDate("finalizedDay");
 		if (date != null) {
-			Calendar deadLine = Calendar.getInstance();
-			deadLine.setTime(date);
-			task.setDeadLine(deadLine);
+			Calendar finalizedDate = Calendar.getInstance();
+			finalizedDate.setTime(date);
+			task.setFinalizedDay(finalizedDate);
 		}
 		return task;
 	}
