@@ -1,6 +1,11 @@
 package com.eduardoportfolio.tasks.controller;
 
+import java.util.List;
+
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.eduardoportfolio.tasks.dao.JdbcTaskDao;
@@ -15,11 +20,16 @@ public class TasksController {
 	}
 	
 	@RequestMapping ("addTask")
-	public String add(Task task) {
+	public String add(@Valid Task task, BindingResult result) {
+		
+		if(result.hasFieldErrors("description")){
+			return "task/taskForm";
+		}
 		
 		JdbcTaskDao dao = new JdbcTaskDao ();
 		dao.create(task);
 		
 		return"task/added";
 	}
+	
 }
