@@ -1,4 +1,4 @@
-package com.eduardoportfolio.taskList.model;
+package com.eduardoportfolio.tasks.model;
 
 import java.util.Calendar;
 

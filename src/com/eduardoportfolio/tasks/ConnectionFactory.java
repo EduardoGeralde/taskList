@@ -1,4 +1,4 @@
-package com.eduardoportfolio.taskList;
+package com.eduardoportfolio.tasks;
 
 import java.sql.Connection;
 import java.sql.DriverManager;

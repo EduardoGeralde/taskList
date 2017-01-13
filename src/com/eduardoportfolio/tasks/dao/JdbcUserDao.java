@@ -1,12 +1,12 @@
-package com.eduardoportfolio.taskList.dao;
+package com.eduardoportfolio.tasks.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import com.eduardoportfolio.taskList.ConnectionFactory;
-import com.eduardoportfolio.taskList.model.User;
+import com.eduardoportfolio.tasks.ConnectionFactory;
+import com.eduardoportfolio.tasks.model.User;
 
 public class JdbcUserDao {
 	private Connection connection;

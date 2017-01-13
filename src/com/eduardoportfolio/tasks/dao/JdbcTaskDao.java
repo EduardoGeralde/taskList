@@ -1,4 +1,4 @@
-package com.eduardoportfolio.taskList.dao;
+package com.eduardoportfolio.tasks.dao;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,8 +9,8 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.eduardoportfolio.taskList.ConnectionFactory;
-import com.eduardoportfolio.taskList.model.Task;
+import com.eduardoportfolio.tasks.ConnectionFactory;
+import com.eduardoportfolio.tasks.model.Task;
 
 public class JdbcTaskDao {
 	private final Connection connection;
@@ -152,9 +152,9 @@ public class JdbcTaskDao {
 		//Fill the deadLine date  of the task, making the conversion
 		Date date = rs.getDate("finalizedDay");
 		if (date != null) {
-			Calendar finalizedDate = Calendar.getInstance();
-			finalizedDate.setTime(date);
-			task.setFinalizedDay(finalizedDate);
+			Calendar finalizedDay = Calendar.getInstance();
+			finalizedDay.setTime(date);
+			task.setFinalizedDay(finalizedDay);
 		}
 		return task;
 	}

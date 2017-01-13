@@ -1,10 +1,10 @@
-package com.eduardoportfolio.taskList.controller;
+package com.eduardoportfolio.tasks.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.eduardoportfolio.taskList.dao.JdbcTaskDao;
-import com.eduardoportfolio.taskList.model.Task;
+import com.eduardoportfolio.tasks.dao.JdbcTaskDao;
+import com.eduardoportfolio.tasks.model.Task;
 
 @Controller
 public class TasksController {
@@ -15,10 +15,10 @@ public class TasksController {
 	}
 	
 	@RequestMapping ("addTask")
-	public String add(Task taskList) {
+	public String add(Task task) {
 		
 		JdbcTaskDao dao = new JdbcTaskDao ();
-		dao.create(taskList);
+		dao.create(task);
 		
 		return"task/added";
 	}
