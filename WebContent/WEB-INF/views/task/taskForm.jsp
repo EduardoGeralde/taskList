@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<h3>Add Tasks</h3>
-		<form:errors path="task.description"/>
+		<form:errors path="task.description" cssStyle="color:red"/>
 		<form action="addTask" method="post">
 			Description: <br />
 			<textarea name="description" rows="5" cols="100"></textarea><br /> 

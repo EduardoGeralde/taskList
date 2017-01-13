@@ -8,7 +8,8 @@ import javax.validation.constraints.Size;
 public class Task {
 	
 	private Long id;
-	@NotNull @Size(min=5)
+	@NotNull (message="Description can not be null ") 
+	@Size(min=5, message="Description has to have more than 5 caracters")
 	private String description;
 	private boolean complete;
 	private Calendar finalizedDay;
