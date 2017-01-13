@@ -2,8 +2,13 @@ package com.eduardoportfolio.tasks.model;
 
 import java.util.Calendar;
 
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
 public class Task {
+	
 	private Long id;
+	@NotNull @Size(min=5)
 	private String description;
 	private boolean complete;
 	private Calendar finalizedDay;
