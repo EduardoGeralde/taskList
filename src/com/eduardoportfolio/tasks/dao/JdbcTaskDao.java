@@ -12,6 +12,14 @@ import java.util.List;
 import com.eduardoportfolio.tasks.ConnectionFactory;
 import com.eduardoportfolio.tasks.model.Task;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * This JdbcTaskDao class has our CRUD and other methods that deal with the behavior of our tasks. 
+ * This represents our basics methods of persistent storage and behavior of the task.
+ * The only responsible to access, change, add and remove our data in BD.
+ */
+
 public class JdbcTaskDao {
 	private final Connection connection;
 

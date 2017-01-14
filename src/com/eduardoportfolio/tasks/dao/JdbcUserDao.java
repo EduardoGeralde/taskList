@@ -8,6 +8,13 @@ import java.sql.SQLException;
 import com.eduardoportfolio.tasks.ConnectionFactory;
 import com.eduardoportfolio.tasks.model.User;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * This JdbcUserDao create a connection on constructor, when instantiate, besides that, it checks if the 
+ * user exists
+ */
+
 public class JdbcUserDao {
 	private Connection connection;
 
