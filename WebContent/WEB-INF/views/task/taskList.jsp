@@ -31,6 +31,7 @@
 					<td>
 						<fmt:formatDate value="${task.finalizedDay.time}" pattern="dd/MM/yyyy"/>
 					</td>
+					<td><a href="removeTask?id=${task.id}">Remove</a></td>
 				</tr>
 			</c:forEach>
 		</table>
