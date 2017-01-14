@@ -37,4 +37,11 @@ public class TasksController {
 		
 		return "task/taskList";
 	}
+	
+	@RequestMapping("removeTask")
+	public String remove(Task task){
+		JdbcTaskDao dao = new JdbcTaskDao();
+		dao.remove(task);
+		return"redirect:taskList";
+	}
 }
