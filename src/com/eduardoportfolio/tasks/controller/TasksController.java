@@ -1,14 +1,10 @@
 package com.eduardoportfolio.tasks.controller;
 
-import java.util.List;
-
 import javax.validation.Valid;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
-
 import com.eduardoportfolio.tasks.dao.JdbcTaskDao;
 import com.eduardoportfolio.tasks.model.Task;
 
