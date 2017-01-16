@@ -6,6 +6,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<script type="text/javascript" src="resources/js/jquery.js"></script>
 		<title>Tasks List</title>
 	</head>
 	<body>
