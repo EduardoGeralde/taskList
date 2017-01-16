@@ -19,7 +19,7 @@
 			<br />
 			
 			Finalized? 
-			<input type="checkbox" name="isComplete" value="true" ${task.isComplete? 'checked' : '' }/><br />
+			<input type="checkbox" name="isComplete" value="true" ${task.isComplete ? 'checked' : '' }/><br />
 			
 			Date of Finalization: <br />
 			<input type="text" name="finalizedDay" 

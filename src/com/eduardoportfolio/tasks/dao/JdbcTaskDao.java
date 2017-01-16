@@ -37,7 +37,7 @@ public class JdbcTaskDao {
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, task.getDescription());
-			stmt.setBoolean(2, task.isComplete());
+			stmt.setBoolean(2, task.getIsComplete());
 			stmt.execute();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
@@ -67,7 +67,7 @@ public class JdbcTaskDao {
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, task.getDescription());
-			stmt.setBoolean(2, task.isComplete());
+			stmt.setBoolean(2, task.getIsComplete());
 			stmt.setDate(3, task.getFinalizedDay() != null ? new Date(
 					task.getFinalizedDay().getTimeInMillis()) : null);
 			stmt.setLong(4, task.getId());
@@ -155,7 +155,7 @@ public class JdbcTaskDao {
 		//Fill object task
 		task.setId(rs.getLong("id"));
 		task.setDescription(rs.getString("description"));
-		task.setComplete(rs.getBoolean("complete"));
+		task.setIsComplete(rs.getBoolean("complete"));
 
 		//Fill the deadLine date  of the task, making the conversion
 		Date date = rs.getDate("finalizedDay");

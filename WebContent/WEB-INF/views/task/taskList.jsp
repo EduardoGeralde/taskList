@@ -16,16 +16,17 @@
 			<tr>
 				<th>Id</th>
 				<th>Description</th>
-				<th>Finalized Day</th>
+				<th>Task Status</th>
+				<th>Finalized Date</th>
 			</tr>
 			<c:forEach items="${tasks}" var="task">
 				<tr>
 					<td>${task.id}</td>
 					<td>${task.description}</td>
-					<c:if test="${task.finalizedDay eq false }">
+					<c:if test="${task.isComplete eq false }">
 						<td>Not yet finalized</td>
 					</c:if>
-					<c:if test="${task.finalizedDay eq true}">
+					<c:if test="${task.isComplete eq true}">
 						<td>Finalized</td>
 					</c:if>
 					<td>

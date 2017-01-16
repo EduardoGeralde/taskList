@@ -13,7 +13,7 @@ public class Task {
 	@NotNull (message="Description can not be null ") 
 	@Size(min=5, message="Description has to have more than 5 caracters")
 	private String description;
-	private boolean complete;
+	private boolean isComplete;
 	@DateTimeFormat (pattern="dd/MM/yyyy")
 	private Calendar finalizedDay;
 
@@ -33,12 +33,12 @@ public class Task {
 		this.description = description;
 	}
 
-	public boolean isComplete() {
-		return complete;
+	public boolean getIsComplete() {
+		return isComplete;
 	}
 
-	public void setComplete(boolean complete) {
-		this.complete = complete;
+	public void setIsComplete(boolean isComplete) {
+		this.isComplete = isComplete;
 	}
 
 	public Calendar getFinalizedDay() {
