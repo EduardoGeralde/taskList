@@ -51,7 +51,14 @@ public class TasksController {
 		JdbcTaskDao dao = new JdbcTaskDao();
 		model.addAttribute("task", dao.selectById(id));
 		
-		return "task/show";
+		return "task/show";	
+	}
+	
+	@RequestMapping("updateTask")
+	public String update(Task task){
 		
+		JdbcTaskDao dao = new JdbcTaskDao();
+		dao.upDate(task);
+		return "redirect:taskList";
 	}
 }
