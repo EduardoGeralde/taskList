@@ -19,10 +19,10 @@
 			<br />
 			
 			Finalized? 
-			<input type="checkbox" name="finalized" value="true" ${task.finalized? 'checked' : '' }/><br />
+			<input type="checkbox" name="isComplete" value="true" ${task.isComplete? 'checked' : '' }/><br />
 			
 			Date of Finalization: <br />
-			<input type="text" name="finalizationDate" 
+			<input type="text" name="finalizedDay" 
 							value="<fmt:formatDate value="${task.finalizedDay.time}" pattern="dd/MM/yyyy"/>"/>
 			<br />
 			<input type="submit" value="Update"/>
