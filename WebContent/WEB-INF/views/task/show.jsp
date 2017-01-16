@@ -3,24 +3,29 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Update Task</title>
-</head>
-<body>
-<h3>Update Task - ${task.id}</h3>
-<form action ="updateTask" method="post">
-
-	<input type="hidden" name="id" value="${task.id}"/>
-	Description: <br />
-	<textarea name="description" cols="100" rows="5">
-		${task.description}
-	</textarea>
-	<br />
-	
-	Finalizado? <input type="checkbox" name="finalized" value="true" ${task.finalized? 'checked' : '' }/><br />
-	
-</form>
-
-</body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Update Task</title>
+	</head>
+	<body>
+		<h3>Update Task - ${task.id}</h3>
+		<form action ="updateTask" method="post">
+			<input type="hidden" name="id" value="${task.id}"/>
+			
+			Description: <br />
+			<textarea name="description" cols="100" rows="5">
+				${task.description}
+			</textarea>
+			<br />
+			
+			Finalized? 
+			<input type="checkbox" name="finalized" value="true" ${task.finalized? 'checked' : '' }/><br />
+			
+			Date of Finalization: <br />
+			<input type="text" name="finalizationDate" 
+							value="<fmt:formatDate value="${task.finalizedDay.time}" pattern="dd/MM/yyyy"/>"/>
+			<br />
+			<input type="submit" value="Update"/>
+		</form>
+	</body>
 </html>
