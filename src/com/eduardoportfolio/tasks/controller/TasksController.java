@@ -44,4 +44,14 @@ public class TasksController {
 		dao.remove(task);
 		return"redirect:taskList";
 	}
+	
+	@RequestMapping("showTask")
+	public String show(Long id, Model model){
+		
+		JdbcTaskDao dao = new JdbcTaskDao();
+		model.addAttribute("task", dao.selectById(id));
+		
+		return "task/show";
+		
+	}
 }
