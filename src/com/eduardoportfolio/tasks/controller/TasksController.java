@@ -28,7 +28,7 @@ public class TasksController {
 		JdbcTaskDao dao = new JdbcTaskDao ();
 		dao.create(task);
 		
-		return"task/added";
+		return"redirect:taskList";
 	}
 	
 	@RequestMapping ("taskList")
