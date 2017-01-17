@@ -5,6 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
 import com.eduardoportfolio.tasks.dao.JdbcTaskDao;
 import com.eduardoportfolio.tasks.model.Task;
 
@@ -38,11 +40,11 @@ public class TasksController {
 		return "task/taskList";
 	}
 	
+	@ResponseBody
 	@RequestMapping("removeTask")
-	public String remove(Task task){
+	public void remove(Task task){
 		JdbcTaskDao dao = new JdbcTaskDao();
 		dao.remove(task);
-		return"redirect:taskList";
 	}
 	
 	@RequestMapping("showTask")
@@ -59,6 +61,20 @@ public class TasksController {
 		
 		JdbcTaskDao dao = new JdbcTaskDao();
 		dao.upDate(task);
+		//"redirect" is used on the client side, for a server-side, "forward" is used
 		return "redirect:taskList";
 	}
+	
+	@RequestMapping ("finalizeTask")
+	public String finalize(Long id, Model model){
+		
+		JdbcTaskDao dao = new JdbcTaskDao();
+		dao.endTask(id);
+		
+		model.addAttribute("task", dao.selectById(id));
+		
+		return "task/finalized";
+	}
+	
+	
 }
