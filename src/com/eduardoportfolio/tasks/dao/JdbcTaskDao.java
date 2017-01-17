@@ -157,7 +157,7 @@ public class JdbcTaskDao {
 		task.setDescription(rs.getString("description"));
 		task.setIsComplete(rs.getBoolean("complete"));
 
-		//Fill the deadLine date  of the task, making the conversion
+		//Fill the finalized date  of the task, making the conversion
 		Date date = rs.getDate("finalizedDay");
 		if (date != null) {
 			Calendar finalizedDay = Calendar.getInstance();
