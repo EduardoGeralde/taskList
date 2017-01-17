@@ -1,5 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%--Created by Eduardo Geralde Neto
+
+Used to help fill the finalized time for the task list--%>
 
 <td>${task.id}</td>
 <td>${task.description}</td>

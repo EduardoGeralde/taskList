@@ -5,6 +5,11 @@
 <!-- Adding the tag created  with datePicker-->
 <%@ taglib tagdir="/WEB-INF/tags" prefix="ed" %>
 
+<%--Created by Eduardo Geralde Neto
+
+This Form is used to receive the task object and fill the inputs with this task data. Then, the user is enable to
+update the data and save it again--%>
+
 <!-- Importing header  -->
 <c:import url="/resources/header.jsp" />
 
@@ -16,11 +21,12 @@
 	</head>
 	<body>
 		<h3>Update Task - ${task.id}</h3>
+		
 		<form action ="updateTask" method="post" name="task">
 			<input type="hidden" name="id" value="${task.id}"/>
 			
 			Description: <br />
-			<textarea name="description" cols="100" rows="5">
+			<textarea name="description" cols="50" rows="3">
 				${task.description}
 			</textarea>
 			<br />
@@ -28,6 +34,7 @@
 			Finalized? 
 			<input type="checkbox" name="isComplete" value="true" ${task.isComplete ? 'checked' : ' ' }/><br />
 			
+			<!-- Using the created tag with date picker -->
 			<fmt:formatDate pattern="dd/MM/yyyy" value="${task.finalizedDay.time}" var="formattedDate"/>
 			Finalized Day: <ed:dateField id="finalizedDay" value="${formattedDate}"/> <br /> 
 			<br />

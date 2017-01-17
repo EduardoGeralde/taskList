@@ -3,6 +3,11 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
+<%--Created by Eduardo Geralde Neto
+
+This Form is used to receive and show the list of all tasks from DB. It has a link to add, update, remove and
+finalize a task. It make use of some AJAX to improve the user experience--%>
+
 <!-- Importing header  -->
 <c:import url="/resources/header.jsp" />
 <html>

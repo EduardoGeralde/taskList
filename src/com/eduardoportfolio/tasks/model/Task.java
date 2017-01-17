@@ -7,6 +7,12 @@ import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * Java Bean task model (POJO).
+ */
+
 public class Task {
 	
 	private Long id;

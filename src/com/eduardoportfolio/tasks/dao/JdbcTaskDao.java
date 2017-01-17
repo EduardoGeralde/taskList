@@ -15,14 +15,15 @@ import com.eduardoportfolio.tasks.model.Task;
 /**
  * @author Eduardo Geralde Neto
  * 
- * This JdbcTaskDao class has our CRUD and other methods that deal with the behavior of our tasks. 
- * This represents our basics methods of persistent storage and behavior of the task.
- * The only responsible to access, change, add and remove our data in BD.
+ * This JdbcTaskDao class create a connection when instantiated. It has our CRUD and other methods 
+ * that deal with the behavior of our tasks.The only responsible to access, change, add and remove our 
+ * data on DB.
  */
 
 public class JdbcTaskDao {
 	private final Connection connection;
 
+	//Creating connection in the constructor
 	public JdbcTaskDao() {
 		try {
 			this.connection = new ConnectionFactory().getConnection();
@@ -31,6 +32,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Create a new task on DB
 	public void create(Task task) {
 		String sql = "insert into tasks (description, complete) values (?,?)";
 		PreparedStatement stmt;
@@ -44,6 +46,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Remove the task on DB by a given id
 	public void remove(Task task) {
 
 		if (task.getId() == null) {
@@ -61,6 +64,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Update the task on DB by a given task data
 	public void upDate(Task task) {
 		String sql = "update tasks set description = ?, complete = ?, finalizedDay = ? where id = ?";
 		PreparedStatement stmt;
@@ -77,18 +81,17 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//List all tasks that are in the DB
 	public List<Task> getList() {
 		
 		try {
 			List<Task> tasks = new ArrayList<Task>();
-			PreparedStatement stmt = this.connection
-					.prepareStatement("select * from tasks");
+			PreparedStatement stmt = this.connection .prepareStatement("select * from tasks");
 
 			ResultSet rs = stmt.executeQuery();
 
 			while (rs.next()) {
 				
-				// Add task in the List
 				tasks.add(fillTask(rs));
 			}
 			rs.close();
@@ -101,6 +104,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Select a specific task by a given id
 	public Task selectById(Long id) {
 
 		if (id == null) {
@@ -127,6 +131,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Turn the task completed, and sets the date with the current time by a given id
 	public void endTask(Long id) {
 
 		if (id == null) {
@@ -148,6 +153,7 @@ public class JdbcTaskDao {
 		}
 	}
 
+	//Auxiliary method to fill the task object and return it
 	private Task fillTask(ResultSet rs) throws SQLException {
 		
 		Task task = new Task();
