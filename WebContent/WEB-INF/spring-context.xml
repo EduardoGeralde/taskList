@@ -22,8 +22,12 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<!--With this annotation, we want the controller not to respond for requisitions that are not for 
-	actions-->
+	<!--Controller not to respond for requisitions that are not for actions-->
 	<mvc:default-servlet-handler/>
+	
+	<!--Registering interceptor-->
+	<mvc:interceptors>
+		<bean class = "com.eduardoportfolio.tasks.interceptor.AuthorizeInterceptor"/>
+	</mvc:interceptors>
 
 </beans>
