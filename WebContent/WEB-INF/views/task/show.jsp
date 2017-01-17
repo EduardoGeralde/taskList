@@ -5,6 +5,9 @@
 <!-- Adding the tag created  with datePicker-->
 <%@ taglib tagdir="/WEB-INF/tags" prefix="ed" %>
 
+<!-- Importing header  -->
+<c:import url="/resources/header.jsp" />
+
 <html>
 	<head>
 		<link href=<c:url value="resources/css/jquery.css"/> rel="stylesheet" type="text/css">
@@ -30,5 +33,7 @@
 			<br />
 			<input type="submit" value="Update"/>
 		</form>
+		<!-- importing footer -->
+		<c:import url="/resources/footer.jsp" />
 	</body>
 </html>
