@@ -1,6 +1,8 @@
 package com.eduardoportfolio.tasks.controller;
 
 import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -20,6 +22,13 @@ import com.eduardoportfolio.tasks.model.Task;
 
 @Controller
 public class TasksController {
+	
+	private final JdbcTaskDao dao;
+	
+	@Autowired
+	public TasksController(JdbcTaskDao dao){
+		this.dao=dao;
+	}
 
 	
 	//Return to the task form
@@ -38,7 +47,6 @@ public class TasksController {
 			return "task/taskForm";
 		}
 		
-		JdbcTaskDao dao = new JdbcTaskDao ();
 		dao.create(task);
 		
 		return"redirect:taskList";
@@ -48,7 +56,6 @@ public class TasksController {
 	@RequestMapping ("taskList")
 	public String list(Model model){
 		
-		JdbcTaskDao dao = new JdbcTaskDao();
 		model.addAttribute("tasks", dao.getList());
 		
 		return "task/taskList";
@@ -58,7 +65,7 @@ public class TasksController {
 	@ResponseBody
 	@RequestMapping("removeTask")
 	public void remove(Task task){
-		JdbcTaskDao dao = new JdbcTaskDao();
+		
 		dao.remove(task);
 	}
 	
@@ -67,7 +74,6 @@ public class TasksController {
 	@RequestMapping("showTask")
 	public String show(Long id, Model model){
 		
-		JdbcTaskDao dao = new JdbcTaskDao();
 		model.addAttribute("task", dao.selectById(id));
 		
 		return "task/show";	
@@ -77,7 +83,6 @@ public class TasksController {
 	@RequestMapping("updateTask")
 	public String update(Task task){
 		
-		JdbcTaskDao dao = new JdbcTaskDao();
 		dao.upDate(task);
 		
 		return "redirect:taskList";
@@ -88,7 +93,6 @@ public class TasksController {
 	@RequestMapping ("finalizeTask")
 	public String finalize(Long id, Model model){
 		
-		JdbcTaskDao dao = new JdbcTaskDao();
 		dao.endTask(id);
 		
 		model.addAttribute("task", dao.selectById(id));
