@@ -9,7 +9,11 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-import com.eduardoportfolio.tasks.ConnectionFactory;
+import javax.sql.DataSource;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
 import com.eduardoportfolio.tasks.model.Task;
 
 /**
@@ -17,16 +21,19 @@ import com.eduardoportfolio.tasks.model.Task;
  * 
  * This JdbcTaskDao class create a connection when instantiated. It has our CRUD and other methods 
  * that deal with the behavior of our tasks.The only responsible to access, change, add and remove our 
- * data on DB.
+ * data.
  */
 
+@Repository
 public class JdbcTaskDao {
+	
 	private final Connection connection;
 
-	//Creating connection in the constructor
-	public JdbcTaskDao() {
+	//Receiving connection in the constructor by dataSource with Spring IoC, dependency injection.
+	@Autowired
+	public JdbcTaskDao(DataSource dataSource) {
 		try {
-			this.connection = new ConnectionFactory().getConnection();
+			this.connection = dataSource.getConnection();
 		} catch (SQLException e) {
 			throw new RuntimeException(e);
 		}
