@@ -18,6 +18,7 @@ update the data and save it again--%>
 		<link href=<c:url value="resources/css/jquery.css"/> rel="stylesheet" type="text/css">
 		<script src="resources/js/jquery.js" type="text/javascript"></script>
 		<script src="resources/js/jquery-ui.js" type="text/javascript"></script>
+		<link type="text/css" href="resources/css/tasks.css" rel="stylesheet"/>
 	</head>
 	<body>
 		<h3>Update Task - ${task.id}</h3>

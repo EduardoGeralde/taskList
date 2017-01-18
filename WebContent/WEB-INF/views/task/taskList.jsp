@@ -13,6 +13,7 @@ finalize a task. It make use of some AJAX to improve the user experience--%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" href="resources/css/tasks.css" rel="stylesheet"/>
 		<script type="text/javascript" src="resources/js/jquery.js"></script>
 		<title>Tasks List</title>
 	</head>
@@ -43,6 +44,8 @@ finalize a task. It make use of some AJAX to improve the user experience--%>
 				<th>Description</th>
 				<th>Task Status</th>
 				<th>Finalized Date</th>
+				<th>Remove</th>
+				<th>UpDate</th>
 			</tr>
 			<c:forEach items="${tasks}" var="task" varStatus="status">
 				<tr bgcolor="${(status.index%2)==0? 'lightblue' : 'white' }" id="task_${task.id}">

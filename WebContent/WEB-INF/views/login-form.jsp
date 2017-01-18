@@ -11,6 +11,7 @@ This Form is the login page--%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" href="resources/css/tasks.css" rel="stylesheet"/>
 		<title>Login Page</title>
 	</head>
 	<body>

@@ -12,6 +12,7 @@ This Form is to add new tags--%>
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<link type="text/css" href="resources/css/tasks.css" rel="stylesheet"/>
 		<title>Task Form</title>
 	</head>
 	<body>
