@@ -8,7 +8,8 @@ import java.sql.SQLException;
  * @author Eduardo Geralde Neto
  * 
  * This ConnectionFactory is responsible to create new connections through the getConnection() method.
- * In this particular case, it returns a mySql connection.
+ * The Spring IoC uses the DataSource class, configured in our spring-context.xml , to inject new 
+ * connections through the getConnection() method.
  */
 
 public class ConnectionFactory {
