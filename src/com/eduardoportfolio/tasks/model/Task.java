@@ -15,22 +15,23 @@ import org.springframework.format.annotation.DateTimeFormat;
 /**
  * @author Eduardo Geralde Neto
  * 
- * Java Bean task model (POJO).
+ * Mapped Java Bean task model (POJO).
  */
 
+//Becomes persistent in the database
 @Entity
 public class Task {
 	
-	@Id
-	@GeneratedValue
+	@Id  //Primary Key
+	@GeneratedValue // Populated by DataBase
 	private Long id;
 	@NotNull (message="Description can not be null ") 
 	@Size(min=5, message="Description has to have more than 5 caracters")
 	private String description;
 	private boolean isComplete;
-	@Temporal (TemporalType.DATE)
+	@Temporal (TemporalType.DATE) //Could be TIME or TIMESTAMP
 	@DateTimeFormat (pattern="dd/MM/yyyy")
-	private Calendar finalizedDay;
+	private Calendar finalizedDate;
 
 	public Long getId() {
 		return id;
@@ -56,12 +57,12 @@ public class Task {
 		this.isComplete = isComplete;
 	}
 
-	public Calendar getFinalizedDay() {
-		return finalizedDay;
+	public Calendar getFinalizedDate() {
+		return finalizedDate;
 	}
 
-	public void setFinalizedDay(Calendar finalizedDay) {
-		this.finalizedDay = finalizedDay;
+	public void setFinalizedDate(Calendar finalizedDate) {
+		this.finalizedDate = finalizedDate;
 	}
 
 }
