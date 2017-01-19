@@ -21,7 +21,7 @@ This Form is to add new tags--%>
 		<form:errors path="task.description" cssStyle="color:red"/>
 		<form action="addTask" method="post">
 			Description: <br />
-			<textarea name="description" rows="3" cols="50"></textarea><br /> 
+			<textarea name="description" rows="2" cols="50"></textarea><br /> 
 			<input type="submit" value="Add">
 		</form>
 		<!-- importing footer -->

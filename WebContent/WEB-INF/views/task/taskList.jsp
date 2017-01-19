@@ -60,7 +60,7 @@ finalize a task. It make use of some AJAX to improve the user experience--%>
 						</td>
 					</c:if>
 					<td>
-						<fmt:formatDate value="${task.finalizedDay.time}" pattern="dd/MM/yyyy"/>
+						<fmt:formatDate value="${task.finalizedDate.time}" pattern="dd/MM/yyyy"/>
 					</td>
 					<td><a href="#" onClick="removeTask(${task.id})">Remove</a></td>
 					<td><a href="showTask?id=${task.id}">Update</a></td>

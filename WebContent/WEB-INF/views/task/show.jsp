@@ -27,17 +27,14 @@ update the data and save it again--%>
 			<input type="hidden" name="id" value="${task.id}"/>
 			
 			Description: <br />
-			<textarea name="description" cols="50" rows="3">
-				${task.description}
-			</textarea>
-			<br />
+			<textarea name="description" rows="2" cols="50">${task.description}</textarea><br />
 			
 			Finalized? 
 			<input type="checkbox" name="isComplete" value="true" ${task.isComplete ? 'checked' : ' ' }/><br />
 			
 			<!-- Using the created tag with date picker -->
-			<fmt:formatDate pattern="dd/MM/yyyy" value="${task.finalizedDay.time}" var="formattedDate"/>
-			Finalized Day: <ed:dateField id="finalizedDay" value="${formattedDate}"/> <br /> 
+			<fmt:formatDate pattern="dd/MM/yyyy" value="${task.finalizedDate.time}" var="formattedDate"/>
+			Finalized Date: <ed:dateField id="finalizedDate" value="${formattedDate}"/> <br /> 
 			<br />
 			<input type="submit" value="Update"/>
 		</form>
