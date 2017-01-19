@@ -1,15 +1,17 @@
 package com.eduardoportfolio.tasks.controller;
 
+import javax.transaction.Transactional;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.eduardoportfolio.tasks.dao.JdbcTaskDao;
+import com.eduardoportfolio.tasks.dao.TaskDao;
 import com.eduardoportfolio.tasks.model.Task;
 
 /**
@@ -20,16 +22,17 @@ import com.eduardoportfolio.tasks.model.Task;
  * action. This controller has all the responsibility of ours actions and views, comes from here.
  */
 
+//Enables transaction management for any method of this class
+@Transactional
+//Is part of Spring MVC and it controls the object
 @Controller
 public class TasksController {
 	
-	private final JdbcTaskDao dao;
-	
+	//With the mysqlDataSource defined in the XML,  Spring injects the dependency
 	@Autowired
-	public TasksController(JdbcTaskDao dao){
-		this.dao=dao;
-	}
-
+	//Using JpaTaskDao to inject
+	@Qualifier("jpaTaskDao")
+	TaskDao dao;
 	
 	//Return to the task form
 	@RequestMapping("newTask")
@@ -47,7 +50,7 @@ public class TasksController {
 			return "task/taskForm";
 		}
 		
-		dao.create(task);
+		dao.add(task);
 		
 		return"redirect:taskList";
 	}
@@ -56,7 +59,7 @@ public class TasksController {
 	@RequestMapping ("taskList")
 	public String list(Model model){
 		
-		model.addAttribute("tasks", dao.getList());
+		model.addAttribute("tasks", dao.list());
 		
 		return "task/taskList";
 	}
@@ -83,7 +86,7 @@ public class TasksController {
 	@RequestMapping("updateTask")
 	public String update(Task task){
 		
-		dao.upDate(task);
+		dao.update(task);
 		
 		return "redirect:taskList";
 	}
