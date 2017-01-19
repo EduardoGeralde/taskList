@@ -24,12 +24,13 @@ import com.eduardoportfolio.tasks.model.Task;
  * data.
  */
 
+//Declaring this class as a component
 @Repository
 public class JdbcTaskDao {
 	
 	private final Connection connection;
 
-	//Receiving connection in the constructor by dataSource with Spring IoC, dependency injection.
+	////With the mysqlDataSource defined in the XML,  Spring injects the dependency
 	@Autowired
 	public JdbcTaskDao(DataSource dataSource) {
 		try {
@@ -40,7 +41,7 @@ public class JdbcTaskDao {
 	}
 
 	//Create a new task on DB
-	public void create(Task task) {
+	public void add(Task task) {
 		String sql = "insert into tasks (description, complete) values (?,?)";
 		PreparedStatement stmt;
 		try {
@@ -72,15 +73,15 @@ public class JdbcTaskDao {
 	}
 
 	//Update the task on DB by a given task data
-	public void upDate(Task task) {
-		String sql = "update tasks set description = ?, complete = ?, finalizedDay = ? where id = ?";
+	public void update(Task task) {
+		String sql = "update tasks set description = ?, complete = ?, finalizedDate = ? where id = ?";
 		PreparedStatement stmt;
 		try {
 			stmt = connection.prepareStatement(sql);
 			stmt.setString(1, task.getDescription());
 			stmt.setBoolean(2, task.getIsComplete());
-			stmt.setDate(3, task.getFinalizedDay() != null ? new Date(
-					task.getFinalizedDay().getTimeInMillis()) : null);
+			stmt.setDate(3, task.getFinalizedDate() != null ? new Date(
+					task.getFinalizedDate().getTimeInMillis()) : null);
 			stmt.setLong(4, task.getId());
 			stmt.execute();
 		} catch (SQLException e) {
@@ -89,7 +90,7 @@ public class JdbcTaskDao {
 	}
 
 	//List all tasks that are in the DB
-	public List<Task> getList() {
+	public List<Task> list() {
 		
 		try {
 			List<Task> tasks = new ArrayList<Task>();
@@ -145,7 +146,7 @@ public class JdbcTaskDao {
 			throw new IllegalStateException("Task ID can not be null");
 		}
 
-		String sql = "update tasks set complete = ?, finalizedDay = ? where id = ?";
+		String sql = "update tasks set complete = ?, finalizedDate = ? where id = ?";
 		
 		PreparedStatement stmt;
 		try {
@@ -171,11 +172,11 @@ public class JdbcTaskDao {
 		task.setIsComplete(rs.getBoolean("complete"));
 
 		//Fill the finalized date  of the task, making the conversion
-		Date date = rs.getDate("finalizedDay");
+		Date date = rs.getDate("finalizedDate");
 		if (date != null) {
-			Calendar finalizedDay = Calendar.getInstance();
-			finalizedDay.setTime(date);
-			task.setFinalizedDay(finalizedDay);
+			Calendar finalizedDate = Calendar.getInstance();
+			finalizedDate.setTime(date);
+			task.setFinalizedDate(finalizedDate);
 		}
 		return task;
 	}
