@@ -19,9 +19,8 @@ import com.eduardoportfolio.tasks.model.Task;
 /**
  * @author Eduardo Geralde Neto
  * 
- * This JdbcTaskDao class create a connection when instantiated. It has our CRUD and other methods 
- * that deal with the behavior of our tasks.The only responsible to access, change, add and remove our 
- * data.
+ * It has our CRUD and other methods that deal with the behavior of our tasks using JDBC.The only 
+ * responsible to access, change, add and remove our data.
  */
 
 //Declaring this class as a component
@@ -54,7 +53,7 @@ public class JdbcTaskDao {
 		}
 	}
 
-	//Remove the task on DB by a given id
+	//Remove the task on DB with a given id
 	public void remove(Task task) {
 
 		if (task.getId() == null) {
@@ -112,7 +111,7 @@ public class JdbcTaskDao {
 		}
 	}
 
-	//Select a specific task by a given id
+	//Select a specific task with a given id
 	public Task selectById(Long id) {
 
 		if (id == null) {
@@ -139,7 +138,7 @@ public class JdbcTaskDao {
 		}
 	}
 
-	//Turn the task completed, and sets the date with the current time by a given id
+	//Turn the task completed, and sets the date with the current time with a given id
 	public void endTask(Long id) {
 
 		if (id == null) {
