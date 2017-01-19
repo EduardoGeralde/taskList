@@ -9,6 +9,12 @@ import javax.persistence.Query;
 
 import com.eduardoportfolio.tasks.model.Task;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * This is a example of how to find a record based on a parameter, manually in the DataBase with JPA.
+ */
+
 public class TaskFinder {
 
 	public static void main(String[] args) {

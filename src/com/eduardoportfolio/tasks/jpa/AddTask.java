@@ -8,6 +8,12 @@ import javax.persistence.Persistence;
 
 import com.eduardoportfolio.tasks.model.Task;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * This is a example of how add a record manually in the DataBase with JPA.
+ */
+
 public class AddTask {
 
 	public static void main(String[] args) {
@@ -15,7 +21,7 @@ public class AddTask {
 		Task task = new Task();
 		task.setDescription("Study R Language");
 		task.setIsComplete(true);
-		task.setFinalizedDay(Calendar.getInstance());
+		task.setFinalizedDate(Calendar.getInstance());
 		
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("Task");
 		EntityManager manager = factory.createEntityManager();
