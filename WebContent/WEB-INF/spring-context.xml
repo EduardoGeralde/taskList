@@ -25,18 +25,34 @@
 	<!--Controller not to respond for requisitions that are not for actions-->
 	<mvc:default-servlet-handler/>
 	
-	<!--Registering interceptor-->
+	<!--Registering intercepter-->
 	<mvc:interceptors>
 		<bean class = "com.eduardoportfolio.tasks.interceptor.AuthorizeInterceptor"/>
 	</mvc:interceptors>
 	
 	<!--Configuring Data Source-->
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<bean id="mysqlDataSource" class="org.apache.commons.dbcp.BasicDataSource">
     <property name="driverClassName" value="com.mysql.jdbc.Driver"/>
     <property name="url" value="jdbc:mysql://localhost/jdbc"/>
     <property name="username" value="root"/>
     <property name="password" value="password"/>
 	</bean>
 	
+	<!-- management of JPA through Spring -->
+	<bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+		<property name="dataSource" ref="mysqlDataSource" />
+		<property name="jpaVendorAdapter">
+			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
+		</property>
+	</bean>
 
-</beans>
+
+	<!-- management of transactions through Spring -->
+	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+		<property name="entityManagerFactory" ref="entityManagerFactory"/>
+	</bean>	
+
+	<tx:annotation-driven/>
+	
+
+	</beans>
