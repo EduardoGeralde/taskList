@@ -4,6 +4,13 @@ import java.util.List;
 
 import com.eduardoportfolio.tasks.model.Task;
 
+/**
+ * @author Eduardo Geralde Neto
+ * 
+ * Interface used to assign methods to our Dao classes.
+ * 
+ */
+
 public interface TaskDao {
 	
 	Task selectById(Long id);

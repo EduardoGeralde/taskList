@@ -19,7 +19,7 @@ import com.eduardoportfolio.tasks.model.Task;
 /**
  * @author Eduardo Geralde Neto
  * 
- * It has our CRUD and other methods that deal with the behavior of our tasks using JDBC.The only 
+ * It has our CRUD and other methods that deal with the behavior of our tasks using JDBC. The only 
  * responsible to access, change, add and remove our data.
  */
 

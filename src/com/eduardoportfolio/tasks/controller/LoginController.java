@@ -15,6 +15,7 @@ import com.eduardoportfolio.tasks.model.User;
  * to menu page, but, if it is not, the controller returns to login form.
  */
 
+//Is part of Spring MVC and it controls the object
 @Controller
 public class LoginController {
 
