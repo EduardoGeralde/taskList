@@ -26,6 +26,7 @@ public class TaskFinder {
 																	+ ":paramFinalized");
 		query.setParameter("paramFinalized", true);
 		
+		@SuppressWarnings("unchecked")
 		List<Task> list = query.getResultList();
 		
 		for (Task task : list){
