@@ -19,7 +19,7 @@ import com.eduardoportfolio.tasks.model.User;
 @Controller
 public class LoginController {
 
-	//Return to the login-form.jsp
+	//Return to login-form.jsp
 	@RequestMapping ("loginForm")
 	public String loginForm(){
 		return "login-form";
