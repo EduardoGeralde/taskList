@@ -3,7 +3,7 @@ package com.eduardoportfolio.tasks.model;
 /**
  * @author Eduardo Geralde Neto
  * 
- * A simple Class, that  has two attributes, and will interact with our login area.
+ * A simple Class that  has two attributes, and will interact with our login area.
  */
 
 public class User {
