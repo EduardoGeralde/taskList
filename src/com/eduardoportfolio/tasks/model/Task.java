@@ -18,7 +18,7 @@ import org.springframework.format.annotation.DateTimeFormat;
  * Mapped Java Bean task model (POJO).
  */
 
-//Becomes persistent in the database
+//Becomes persistent in the database.
 @Entity
 public class Task {
 	
