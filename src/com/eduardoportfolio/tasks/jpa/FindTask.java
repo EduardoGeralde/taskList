@@ -9,7 +9,7 @@ import com.eduardoportfolio.tasks.model.Task;
 /**
  * @author Eduardo Geralde Neto
  * 
- * This is a example of how find a specific record by id manually in the DataBase with JPA.
+ * This is a example of how find a specific record by id manually in the DataBase with JPA
  */
 
 public class FindTask {
