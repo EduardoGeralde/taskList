@@ -6,7 +6,7 @@ import javax.persistence.Persistence;
 /**
  * @author Eduardo Geralde Neto
  * 
- * This is a example of how generate the table manually with JPA.
+ * This is a example of how generate the table manually with JPA
  */
 
 public class GenerateTables {
