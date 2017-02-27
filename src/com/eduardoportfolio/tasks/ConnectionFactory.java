@@ -9,7 +9,7 @@ import java.sql.SQLException;
  * 
  * This ConnectionFactory is responsible to create new connections through the getConnection() method.
  * The Spring IoC uses the DataSource class, configured in our spring-context.xml , to inject new 
- * connections through the getConnection() method.
+ * connections through the getConnection() method
  */
 
 public class ConnectionFactory {
