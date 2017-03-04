@@ -19,7 +19,7 @@ import com.eduardoportfolio.tasks.model.Task;
  * 
  * This class controls the flow of our application.  Which one of theses methods represents actions (business 
  * rules), and after apply the correct action, it returns to the correspondent view or redirect to another
- * action. The responsibility of ours actions and views, comes from here
+ * action. The responsibility of ours actions and views, comes from here.
  */
 
 //Enables Spring transaction management for any method of this class
