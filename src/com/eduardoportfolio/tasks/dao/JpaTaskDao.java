@@ -14,7 +14,7 @@ import com.eduardoportfolio.tasks.model.Task;
  * @author Eduardo Geralde Neto
  * 
  * It has our CRUD and other methods that deal with the behavior of our tasks using JPA specification.
- * The only responsible to access, change, add and remove our data
+ * The only responsible to access, change, add and remove our data.
  */
 
 //Declaring this class as a component
