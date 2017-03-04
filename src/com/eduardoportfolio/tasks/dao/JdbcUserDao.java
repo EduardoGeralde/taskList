@@ -12,7 +12,7 @@ import com.eduardoportfolio.tasks.model.User;
  * @author Eduardo Geralde Neto
  * 
  * This JdbcUserDao class has the userExists method that checks, if the user and password already exists 
- * on our BD, and return true or false
+ * on our BD, and return true or false.
  */
 
 public class JdbcUserDao {
