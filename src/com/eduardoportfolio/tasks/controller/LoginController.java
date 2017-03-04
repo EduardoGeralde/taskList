@@ -12,7 +12,7 @@ import com.eduardoportfolio.tasks.model.User;
  * @author Eduardo Geralde Neto
  * 
  * This class controls the flows of the logged users into the sessions, when user is logged, the controller send
- * to menu page, but, if it is not, the controller returns to login form
+ * to menu page, but, if it is not, the controller returns to login form.
  */
 
 //Is part of Spring MVC and it controls the object
